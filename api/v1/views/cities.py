@@ -46,7 +46,7 @@ def delete_city(city_id):
                  strict_slashes=False)
 def create_city(state_id):
     """ Create a City """
-    city_name_name = request.get_json()
+    city_name = request.get_json()
     if not storage.get('State', state_id):
         abort(404)
     if not city_name:
