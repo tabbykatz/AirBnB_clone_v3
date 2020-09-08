@@ -3,6 +3,29 @@
 
 import pep8
 import unittest
+import pytest
+import os
+import tempfile
+import flask
+from api.v1.app import app
+from models.engine import db_storage
+
+
+class appTest(unittest.TestCase):
+
+    def setUp(self):
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
+        app.config['DEBUG'] = False
+        self.app = app.test_client()
+
+    def tearDown(self):
+        pass
+
+    @app_views.route('/status', strict_slashes=False)
+    def test_main_page(self):
+        response = self.app.get('/status', follow_redirects=True)
+        self.assertEqual(response.status_code, 404)
 
 
 class TestApp(unittest.TestCase):
