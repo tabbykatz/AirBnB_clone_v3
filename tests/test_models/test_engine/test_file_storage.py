@@ -125,7 +125,6 @@ class TestDBStorage(unittest.TestCase):
         models.storage.new(new_state)
         new_state.save()
         first_state_id = list(models.storage.all("State").values())[0].id
-        # print(models.storage.get("State", first_state_id).__class__.__name__)
         self.assertEqual(models.storage.get(
             "State", first_state_id).__class__.__name__, 'State')
         temp_stdout1 = StringIO()
