@@ -12,13 +12,13 @@ from models.state import State
 @app_views.route('/cities',
                  methods=['GET'],
                  strict_slashes=False)
-def cities():
-    """ get all cities """
-    cities = []
-    all_cities = storage.all('City').values()
-    for city in all_cities:
-        cities.append(city.to_dict())
-    return jsonify(cities)
+#def cities():
+#    """ get all cities """
+#    cities = []
+#    all_cities = storage.all('City').values()
+#    for city in all_cities:
+#        cities.append(city.to_dict())
+#    return jsonify(cities)
 
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
