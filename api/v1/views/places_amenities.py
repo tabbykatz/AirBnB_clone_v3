@@ -6,7 +6,7 @@ from models import storage
 from models.review import Review
 
 
-@app_views.route('/api/v1/places/<place_id>/amenities', strict_slashes=False)
+@app_views.route('/places/<place_id>/amenities', strict_slashes=False)
 def all_amenities_place(place_id):
     """ get all amenities """
     place = storage.get('Place', place_id)
@@ -18,7 +18,7 @@ def all_amenities_place(place_id):
     return jsonify(all_amenities)
 
 
-@app_views.route('/api/v1/places/<place_id>/amenities/<amenity_id>',
+@app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['DELETE'], strict_slashes=False)
 def delete_amenity_by_place(place_id, amenity_id):
     """ delete an amenity """
@@ -35,7 +35,7 @@ def delete_amenity_by_place(place_id, amenity_id):
     return {}
 
 
-@app_views.route('/api/v1/places/<place_id>/amenities/<amenity_id>',
+@app_views.route('/places/<place_id>/amenities/<amenity_id>',
                  methods=['POST'], strict_slashes=False)
 def link_amenity_to_a_place(place_id, amenity_id):
     """ link an amenity to a place """
