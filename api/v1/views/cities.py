@@ -30,7 +30,7 @@ def all_cities(state_id):
         abort(404)
     for city in storage.all('City').values():
         if state_id == city.to_dict()['state_id']:
-            all_states.append(state.to_dict())
+            all_cities.append(city.to_dict())
     return jsonify(all_cities)
 
 
