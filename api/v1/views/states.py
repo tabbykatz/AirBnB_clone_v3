@@ -2,13 +2,13 @@
 """
 New view for State objects that handles default Restful API actions
 """
-from flask import Flask, jsonify, abort, request
+from flask import Flask, jsonify, abort, request, make_response
 from api.v1.views import app_views
 from models import storage
 from models.state import State
 
 
-@app_views.route('/api/v1/states', strict_slashes=False)
+@app_views.route('/states', methods=['GET'], strict_slashes=False)
 def all_states():
     """ Retrieve a list of all State objects """
     all_states = []
@@ -17,7 +17,7 @@ def all_states():
     return jsonify(all_states)
 
 
-@app_views.route('/api/v1/states/<state_id>', strict_slashes=False)
+@app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 def retrieve_state(state_id):
     """ Retrieve a particular State """
     try:
@@ -27,7 +27,7 @@ def retrieve_state(state_id):
         abort(404)
 
 
-@app_views.route('/api/v1/states/<state_id>', methods=['DELETE'],
+@app_views.route('/states/<state_id>', methods=['DELETE'],
                  strict_slashes=False)
 def delete_state(state_id):
     """ Delete a State """
@@ -39,7 +39,7 @@ def delete_state(state_id):
     abort(404)
 
 
-@app_views.route('/api/v1/states', methods=['POST'],
+@app_views.route('/states', methods=['POST'],
                  strict_slashes=False)
 def create_state():
     """ Create a State """
@@ -54,7 +54,7 @@ def create_state():
     return new_state.to_dict(), 201
 
 
-@app_views.route('/api/v1/states/<state_id>', methods=['PUT'],
+@app_views.route('/states/<state_id>', methods=['PUT'],
                  strict_slashes=False)
 def update_state(state_id):
     """ Update a State """
