@@ -19,7 +19,7 @@ def retrieve_places():
     return jsonify(places)
 
 
-@app_views.route('/cities/<string:city_id>/places',
+@app_views.route('/cities/<city_id>/places',
                  methods=['GET'],
                  strict_slashes=False)
 def get_a_place(city_id):
@@ -33,7 +33,7 @@ def get_a_place(city_id):
     return jsonify(places)
 
 
-@app_views.route('/places/<string:place_id>',
+@app_views.route('/places/<place_id>',
                  methods=['GET'],
                  strict_slashes=False)
 def place_by_id(place_id):
@@ -44,7 +44,7 @@ def place_by_id(place_id):
     return jsonify(a_place.to_dict())
 
 
-@app_views.route('/places/<string:place_id>',
+@app_views.route('/places/<place_id>',
                  methods=['DELETE'],
                  strict_slashes=False)
 def delete_place(place_id):
@@ -82,7 +82,7 @@ def create_place(city_id):
     return make_response(jsonify(the_place.to_dict()), 201)
 
 
-@app_views.route('/places/<string:place_id>', methods=['PUT'],
+@app_views.route('/places/<place_id>', methods=['PUT'],
                  strict_slashes=False)
 def update_place(place_id):
     """ update a Place """
