@@ -9,9 +9,9 @@ from models.city import City
 from models.state import State
 
 
-@app_views.route('/cities',
-                 methods=['GET'],
-                 strict_slashes=False)
+#@app_views.route('/cities',
+#                 methods=['GET'],
+#                 strict_slashes=False)
 #def cities():
 #    """ get all cities """
 #    cities = []
