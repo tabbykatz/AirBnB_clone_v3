@@ -29,7 +29,7 @@ def retrieve_review(review_id):
     abort(404)
 
 
-@app_views.route('/review/<review_id>', methods=['DELETE'],
+@app_views.route('/reviews/<review_id>', methods=['DELETE'],
                  strict_slashes=False)
 def delete_review(review_id):
     """ delete an Review """
