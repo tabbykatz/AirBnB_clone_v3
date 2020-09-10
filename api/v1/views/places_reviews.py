@@ -4,6 +4,8 @@ from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from models import storage
 from models.review import Review
+from models.user import User
+from models.place import Place
 
 
 @app_views.route('/places/<place_id>/reviews', strict_slashes=False)
@@ -27,7 +29,7 @@ def retrieve_review(review_id):
     abort(404)
 
 
-@app_views.route('/review/<review_id>', methods=['DELETE'],
+@app_views.route('/reviews/<review_id>', methods=['DELETE'],
                  strict_slashes=False)
 def delete_review(review_id):
     """ delete an Review """
