@@ -156,6 +156,7 @@ No known bugs at this time.
 ## Authors
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
+
 Tabitha O'Melay - [Github](https://github.com/tabbykatz) / [Twitter](https://twitter.com/tabby__katz)
 Trevor Stevenson - [Github](https://github.com/tr3v1n4t0r) / [Twitter](https://twitter.com/tr3v1nat0r)
 
