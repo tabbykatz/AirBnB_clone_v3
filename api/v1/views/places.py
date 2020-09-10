@@ -135,8 +135,8 @@ def searchPlace():
         alist = list(answer)
 
     dict_plist = [pl.to_dict() for pl in alist]
-    for pdict in dict_plist:
-        if "amenities" in pdict:
-            del pdict["amenities"]
+    for adict in dict_plist:
+        if "amenities" in adict:
+            del adict["amenities"]
 
     return jsonify(dict_plist)
