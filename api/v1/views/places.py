@@ -96,3 +96,47 @@ def update_place(place_id):
             setattr(a_place, req, request.json[req])
     a_place.save()
     return jsonify(a_place.to_dict())
+
+
+@app_views.route("/places_search", methods=["POST"], strict_slashes=False)
+def searchPlace():
+    """ retrieves all Place objects depending of the JSON in the body of the
+    request."""
+    search = request.get_json()
+    if search is None:
+        return jsonify({"error": "Not a JSON"}), 400
+
+    answer = set()
+
+    if "states" in search:
+        stid = [storage.get("State", stateid) for stateid in search["states"]]
+        states = [st for st in stid if st is not None]
+        for state in states:
+            for city in state.cities:
+                answer.update(set(city.places))
+
+    if "cities" in search:
+        cityid = [storage.get("City", cid) for cid in search["cities"]]
+        cities = [cty for cty in cityid if cty is not None]
+        for city in cities:
+            for place in city.places:
+                if place not in answer:
+                    answer.add(place)
+
+    if len(answer) == 0:
+        answer = storage.all("Place").values()
+
+    if "amenities" in search:
+        amenities = [storage.get("Amenity", amenid) for amenid in
+                     search["amenities"]]
+        alist = [a for a in search if
+                 all(amen in a.amenities for amen in amenities)]
+    else:
+        alist = list(answer)
+
+    dict_plist = [pl.to_dict() for pl in alist]
+    for pdict in dict_plist:
+        if "amenities" in pdict:
+            del pdict["amenities"]
+
+    return jsonify(dict_plist)
